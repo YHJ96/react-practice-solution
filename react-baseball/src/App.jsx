@@ -1,13 +1,10 @@
-/* 아래의 주석은 지우시면 안됩니다. */
-/* global MissionUtils */
-
 import React, { useState, useEffect } from 'react';
 
 /* API 호출 상수 */
-const Random = MissionUtils.Random;
 
 function App() {
   /* 코드 작성 구역 */
+  const Random = global.MissionUtils.Random;
 
   const [computerNumber, setComputerNumber] = useState([]);
   const [playerNumber, setPlayerNumber] = useState('');
@@ -123,7 +120,7 @@ function App() {
       틀린 예) 122
     </p>
     <form>
-      <input type="text" id="user-input" onChange={handleInputChange} />
+      <input type="text" id="user-input" value={playerNumber} onChange={handleInputChange} />
       <button id="submit" onClick={handleSubmitOnClick}>확인</button>
     </form>
     <h3>📄 결과</h3>
