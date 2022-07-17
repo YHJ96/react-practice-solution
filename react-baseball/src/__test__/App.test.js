@@ -9,6 +9,7 @@ describe("✅ input 테스트 케이스", () => {
         const inputValue = screen.getByDisplayValue("193");
         expect(inputValue.value).toEqual("193");
     });
+
     test("문자가 들어올 경우 alert 경고창으로 나타내야합니다.", () => {
         const alertMock = jest.spyOn(window, "alert");
         const { container } = render(<App />);
@@ -16,6 +17,7 @@ describe("✅ input 테스트 케이스", () => {
         fireEvent.change($input, { target: { value: "123a" } });
         expect(alertMock).toHaveBeenCalledTimes(1);
     });
+
     test("중복된 숫자가 들어올 경우 alert 경고창으로 나타내야합니다.", () => {
         const alertMock = jest.spyOn(window, "alert");
         const { container } = render(<App />);
@@ -23,6 +25,7 @@ describe("✅ input 테스트 케이스", () => {
         fireEvent.change($input, { target: { value: "122" } });
         expect(alertMock).toHaveBeenCalledTimes(1);
     });
+
     test("4자리이상 숫자가 들어올 경우 alert 경고창으로 나타내야합니다.", () => {
         const alertMock = jest.spyOn(window, "alert");
         const { container } = render(<App />);
@@ -109,6 +112,7 @@ describe("🎊 승리 테스트 케이스", () => {
         const $resetbutton = screen.getByText("재시작");
         expect($resetbutton).toBeInTheDocument();
     });
+
     test("재시작 버튼을 눌렀을 경우 window.confirm 창을 나타내야합니다.", () => {
         const confirmMock = jest.spyOn(window, "confirm");
         const { container } = render(<App />);
@@ -122,10 +126,12 @@ describe("🎊 승리 테스트 케이스", () => {
         fireEvent.click($resetbutton);
         expect(confirmMock).toHaveBeenCalledTimes(1);
     });
+
     test("재시작 버튼을 눌렀을 경우 confirm의 확인을 눌러야 새로고침이 되어야 합니다. (🌈 window.location.reload 사용)", () => {
-        const confirmMock = jest.spyOn(window, "confirm")
-            .mockReturnValueOnce(false)
-            .mockReturnValueOnce(true);
+        jest.spyOn(window, "confirm")
+        .mockReturnValueOnce(false)
+        .mockReturnValueOnce(true);
+        const reloadMock = jest.spyOn(window.location, "reload");
         const { container } = render(<App />);
         const $input = container.querySelector("input");
         const $button = container.querySelector("button");
@@ -135,7 +141,8 @@ describe("🎊 승리 테스트 케이스", () => {
         expect($result.textContent).toEqual("승리");
         const $resetbutton = screen.getByText("재시작");
         fireEvent.click($resetbutton);
-        if (confirmMock()) expect(window.location.reload).toHaveBeenCalledTimes(0);
-        if (confirmMock()) expect(window.location.reload).toHaveBeenCalledTimes(1);
+        expect(reloadMock).toHaveBeenCalledTimes(0);
+        fireEvent.click($resetbutton);
+        expect(reloadMock).toHaveBeenCalledTimes(1);
     });
 });
