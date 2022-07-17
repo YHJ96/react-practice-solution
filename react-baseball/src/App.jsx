@@ -6,16 +6,10 @@ function App() {
   /* 코드 작성 구역 */
   const Random = global.MissionUtils.Random;
 
-  const [computerNumber, setComputerNumber] = useState([]);
+  const [computerNumber] = useState(Random.pickUniqueNumbersInRange(1, 9, 3));
   const [playerNumber, setPlayerNumber] = useState('');
   const [isWin, setIsWin] = useState(false);
   const [comment, setComment] = useState('');
-
-  const createRandomNumber = () => {
-    const result = new Set();
-    while(result.size < 3) result.add(Random.pickNumberInRange(1, 9));
-    return [...result];
-  };
 
   const handleInputChange = (e) => {
     if (isTypeCheck(e.target.value)) {
@@ -82,6 +76,7 @@ function App() {
   }
 
   const isUnique = (text = '') => {
+    if (text.length === 0) return false;
     const head = text.slice(0, text.length - 1);
     const tail = text.slice(-1);
     if (head.includes(tail)) return true;
@@ -107,8 +102,6 @@ function App() {
   const isResetButton = () => {
     return (isWin) ? <button id="game-restart-button" onClick={handleResetOnClick}>재시작</button> : null
   }
-
-  useEffect(() => setComputerNumber(createRandomNumber()), []);
 
   return (
     <div id="app">
