@@ -1,6 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from '../App';
 
+describe("🚀 random 테스트 케이스", () => {
+    test("Random의 pickUniqueNumbersInRange 메소드를 사용하여 랜덤값을 생성해야합니다.", () => {
+        const random = global.MissionUtils.Random.pickUniqueNumbersInRange;
+        render(<App/>);
+        expect(random).toHaveBeenCalledTimes(1);
+    });
+});
+
 describe("✅ input 테스트 케이스", () => {
     test("input의 입력값에 맞게 입력값이 변해야합니다.", () => {
         const { container } = render(<App />);
