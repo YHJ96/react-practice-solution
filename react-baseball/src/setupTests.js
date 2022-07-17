@@ -4,7 +4,7 @@ const pickNumberInRange = jest.fn();
 
 beforeEach(() => {
     window.confirm = jest.fn();
-    global.alert = jest.fn();
+    window.alert = jest.fn();
     global.MissionUtils = {
         Random: {
             pickNumberInRange
