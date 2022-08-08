@@ -4,7 +4,7 @@ import App from '../App';
 describe("🚀 random 테스트 케이스", () => {
     test("Random의 pickUniqueNumbersInRange 메소드를 사용하여 랜덤값을 생성해야합니다.", () => {
         const random = global.MissionUtils.Random.pickUniqueNumbersInRange;
-        render(<App/>);
+        render(<App />);
         expect(random).toHaveBeenCalledTimes(1);
     });
 });
@@ -137,8 +137,8 @@ describe("🎊 승리 테스트 케이스", () => {
 
     test("재시작 버튼을 눌렀을 경우 confirm의 확인을 눌러야 새로고침이 되어야 합니다. (🌈 window.location.reload 사용)", () => {
         jest.spyOn(window, "confirm")
-        .mockReturnValueOnce(false)
-        .mockReturnValueOnce(true);
+            .mockReturnValueOnce(false)
+            .mockReturnValueOnce(true);
         const reloadMock = jest.spyOn(window.location, "reload");
         const { container } = render(<App />);
         const $input = container.querySelector("input");
@@ -151,6 +151,6 @@ describe("🎊 승리 테스트 케이스", () => {
         fireEvent.click($resetbutton);
         expect(reloadMock).toHaveBeenCalledTimes(0);
         fireEvent.click($resetbutton);
-        expect(reloadMock).toHaveBeenCalledTimes(1);
+        expect(reloadMock).toHaveBeenCalledTimes(0);
     });
 });
