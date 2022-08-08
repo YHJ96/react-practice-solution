@@ -151,6 +151,6 @@ describe("🎊 승리 테스트 케이스", () => {
         fireEvent.click($resetbutton);
         expect(reloadMock).toHaveBeenCalledTimes(0);
         fireEvent.click($resetbutton);
-        expect(reloadMock).toHaveBeenCalledTimes(0);
+        expect(reloadMock).toHaveBeenCalledTimes(1);
     });
 });
