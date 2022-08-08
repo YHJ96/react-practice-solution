@@ -17,6 +17,7 @@ jobs:
           node-version: '16'
       - run: npm install
       - run: npm test
+      - run: npm run build
       
       - name: Deploy to Staging
         id: deploy-vercel-staging
