@@ -1,4 +1,4 @@
-name: react-baseball
+name: react-practice-solution-react-baseball
 
 on: [push, pull_request]
 
@@ -9,7 +9,7 @@ jobs:
       react-baseball: ./react-baseball
     steps:
       - uses: actions/checkout@v3
-      - name: react-baseball
+      - name: react-practice-solution-react-baseball
         uses: actions/setup-node@v3
         with:
           node-version: '18'
