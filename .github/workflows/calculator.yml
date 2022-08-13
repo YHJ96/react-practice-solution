@@ -1,0 +1,19 @@
+name: calculator
+
+on: [push, pull_request]
+
+jobs:
+  React-Test-Library:
+    runs-on: ubuntu-latest
+    defaults: 
+      run: 
+        shell: bash
+        working-directory: react-calculator
+    steps:
+      - uses: actions/checkout@v2
+      - name: React-Test-Library
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npm test
