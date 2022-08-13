@@ -33,7 +33,6 @@ const App = () => {
             }
             // 다시 확인
             if (operator === '') setPreNum((preNum) => {
-                console.log(preNum);
                 if(preNum.length >= 3) {
                     alert("숫자의 자리수는 세자리까지 가능합니다.");
                     return preNum;
@@ -113,7 +112,7 @@ const App = () => {
             </div>
             <div className="operations subgrid">
                 <button className="operation" value={'/'} onClick={handleOneClick}>/</button>
-                <button className="operation" value={'x'} onClick={handleOneClick}>X</button>
+                <button className="operation" value={'x'} onClick={handleOneClick}>x</button>
                 <button className="operation" value={'-'} onClick={handleOneClick}>-</button>
                 <button className="operation" value={'+'} onClick={handleOneClick}>+</button>
                 <button className="operation" value={'='} onClick={handleOneClick}>=</button>
