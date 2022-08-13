@@ -1,0 +1,19 @@
+name: racingcar
+
+on: [push, pull_request]
+
+jobs:
+  React-Test-Library:
+    runs-on: ubuntu-latest
+    defaults: 
+      run: 
+        shell: bash
+        working-directory: react-racingcar
+    steps:
+      - uses: actions/checkout@v2
+      - name: React-Test-Library
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npm test
